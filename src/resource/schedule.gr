@@ -1,0 +1,21 @@
+Schedule {
+    Sunday : 01 -> 4091 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4012 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+
+    Sunday : 02 -> 4012 (80, Proyektor, Kursi, WhiteBoard, Layar),  IF4042 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Monday : 03 -> 4023 (50, Proyektor, Kursi, WhiteBoard, Layar),  IF4021 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Tuesday : 04 -> 4033 (50,Proyektor, Kursi, WhiteBoard, Layar),  IF4033 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+    Wednesday : 01 -> 4091 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4012 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+    Wednesday : 02 -> 4012 (50,Proyektor, Kursi, WhiteBoard, Layar),  IF4042 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Thursday : 03 -> 4023 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4021 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Friday : 04 -> 4033 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4033 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+    Saturday : 01 -> 4091 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4012 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+    Friday : 02 -> 4012 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4042 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Friday : 03 -> 4023 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4021 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Monday : 04 -> 4033 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4033 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+    Monday : 01 -> 4091 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4012 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+    Saturday : 02 -> 4012 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4042 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Saturday : 03 -> 4023 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4021 (100,Proyektor, Kursi, WhiteBoard, Layar) : W
+    Tuesday : 04 -> 4033 (100,Proyektor, Kursi, WhiteBoard, Layar),  IF4033 (100,Proyektor, Kursi, WhiteBoard, Layar) : P
+
+
+}
