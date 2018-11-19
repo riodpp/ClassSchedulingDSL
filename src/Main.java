@@ -1,5 +1,8 @@
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import org.antlr.v4.runtime.*;
 import  org.antlr.v4.runtime.tree.*;
 
@@ -13,17 +16,53 @@ public class Main {
     Konfigurasi
     Matkul
     */
+
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
+    }
+
     public static void main(String[] args) throws IOException {
 //        System.out.println("Hello World!");
         InputStream is =
-                ClassLoader.getSystemResourceAsStream("resources/graph.gr");
+                ClassLoader.getSystemResourceAsStream("resource/schedule.gr");
 
         CharStream cs = new ANTLRInputStream(is);
 
-        ScheduleLexer lexer = new ScheduleLexer(cs);
+//        ScheduleLexer lexer = new ScheduleLexer(cs);
+//
+//        CommonTokenStream tokens = new CommonTokenStream(lexer);
+//
+//        ScheduleParser parser = new ScheduleParser(tokens);
 
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        // coba2
+        String result = getStringFromInputStream(is);
+//        System.out.println(result);
+        System.out.println(cs.toString());
 
-        ScheduleParser parser = new ScheduleParser(tokens);
     }
 }
