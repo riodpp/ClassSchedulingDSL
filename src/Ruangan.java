@@ -57,8 +57,8 @@ public class Ruangan {
     public void addfasilitas(String fasilitas) {
         this.fasilitas.add(fasilitas);
     }
-
-    public static void main(String[] args){
-        Ruangan room = new Ruangan("7602", 50, 3);
-    }
+//
+//    public static void main(String[] args){
+//        Ruangan room = new Ruangan("7602", 50, 3);
+//    }
 }
