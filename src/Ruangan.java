@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Ruangan {
     private String nama;
@@ -8,13 +10,24 @@ public class Ruangan {
     public Ruangan(){
         nama = "Ruang Kelas";
         kapasitas = 50;
-        this.fasilitas = null;
+        List<String> fasilitas = new ArrayList<String>();
     }
 
-    public Ruangan(String nama, int kapasitas, boolean laptop, boolean papanTulis){
+    public Ruangan(String nama, int kapasitas, List<String> fasilitas){
         this.nama = nama;
         this.kapasitas = kapasitas;
         this.fasilitas = fasilitas;
+    }
+
+    public Ruangan(String nama, int kapasitas, int jumlah_fasilitas){
+        List<String> fasilitas = new ArrayList<String>();
+        this.nama = nama;
+        this.kapasitas = kapasitas;
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < jumlah_fasilitas; ++i){
+            String item = sc.nextLine();
+            fasilitas.add(item);
+        }
     }
 
     public String getNama(){
@@ -43,5 +56,9 @@ public class Ruangan {
 
     public void addfasilitas(String fasilitas) {
         this.fasilitas.add(fasilitas);
+    }
+
+    public static void main(String[] args){
+        Ruangan room = new Ruangan("7602", 50, 3);
     }
 }
