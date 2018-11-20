@@ -57,7 +57,13 @@ public class Ruangan {
     public void addfasilitas(String fasilitas) {
         this.fasilitas.add(fasilitas);
     }
-//
+
+    @Override
+    public String toString() {
+        return "("+kapasitas + " " + fasilitas+")";
+    }
+
+    //
 //    public static void main(String[] args){
 //        Ruangan room = new Ruangan("7602", 50, 3);
 //    }

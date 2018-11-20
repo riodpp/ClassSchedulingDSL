@@ -47,4 +47,9 @@ public class Jadwal {
     public void setMatkul(MataKuliah matkul) {
         this.matkul = matkul;
     }
+
+    @Override
+    public String toString() {
+        return getHari()+" "+getJam()+" -> "+getRuangan().getNama()+" "+getRuangan().toString()+" "+getMatkul().toString()+" "+getRuangan().toString()+" "+getPreforw();
+    }
 }

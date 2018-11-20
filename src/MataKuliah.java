@@ -26,4 +26,8 @@ public class MataKuliah {
         this.kode = kode;
     }
 
+    @Override
+    public String toString() {
+        return nama;
+    }
 }

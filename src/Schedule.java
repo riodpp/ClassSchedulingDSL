@@ -15,4 +15,11 @@ public class Schedule {
     public List<Jadwal> getJadwal(){
         return schedule;
     }
+
+    public static void printSchedule(Schedule jadwal){
+        System.out.println("Jadwal...");
+        for (Jadwal e : jadwal.getJadwal()) {
+            System.out.println(e);
+        }
+    }
 }

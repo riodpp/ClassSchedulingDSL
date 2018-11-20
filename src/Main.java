@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
@@ -55,14 +57,47 @@ public class Main {
 //
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 //
-//        ScheduleParser parser = new ScheduleParser(tokens);
+        ScheduleParser parser = new ScheduleParser(tokens);
 
+        Schedule s = new Schedule();
+
+        parser.addParseListener(new MyScheduleBaseListener((s)));
+
+        parser.jadwal();
+
+        Schedule.printSchedule(s);
         // coba2
 //        String result = getStringFromInputStream(is);
 //        System.out.println(result);
 //        System.out.println(cs.toString());
 //        System.out.println(lexer.toString());
-        System.out.println(tokens.getText());
+//        System.out.println(tokens.getText());
 
+
+    }
+
+    static class MyScheduleBaseListener extends ScheduleBaseListener {
+
+        Schedule s;
+
+        public MyScheduleBaseListener(Schedule s){
+            this.s = s;
+        }
+
+        @Override
+        public void exitJadwal(ScheduleParser.JadwalContext ctx) {
+            List<String> tesList = new ArrayList<>();
+            tesList.add("abc");
+            tesList.add("tes");
+            String preforw = ctx.preforw().getText();
+            MataKuliah matkul = new MataKuliah(ctx.matkul().getText(), ctx.matkul().getText());
+            Konfigurasi konfigurasi = new Konfigurasi(Integer.parseInt(ctx.konfigurasi(0).kapasitas().getText()), tesList);
+            Ruangan ruangan = new Ruangan(ctx.ruangan().getText(), konfigurasi.getJumlahKapasitas(), konfigurasi.getFasilitas() );
+            String jam = ctx.jam().getText();
+            String hari = ctx.hari().getText();
+            Jadwal j = new Jadwal(hari, jam, ruangan, matkul, preforw);
+
+            s.addJadwal(j);
+        }
     }
 }

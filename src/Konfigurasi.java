@@ -29,4 +29,9 @@ public class Konfigurasi {
     public void addfasilitas(String fasilitas) {
         this.fasilitas.add(fasilitas);
     }
+
+    @Override
+    public String toString() {
+        return getJumlahKapasitas() + " " + getFasilitas();
+    }
 }
