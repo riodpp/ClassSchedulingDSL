@@ -11,16 +11,22 @@ public class ScheduleLexer extends Lexer {
     protected static final DFA[] _decisionToDFA;
     protected static final PredictionContextCache _sharedContextCache =
             new PredictionContextCache();
+    public static final int
+            T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8,
+            HARI=9, JAM=10, PREFORW=11, ALPHA=12, ALPHAS=13, ALPHANUM=14, NUM=15,
+            WS=16;
     public static String[] modeNames = {
             "DEFAULT_MODE"
     };
 
     public static final String[] tokenNames = {
             "<INVALID>",
-            "'->'", "')'", "'('", "'Graph {'", "'}'", "ID", "NUM", "WS"
+            "'Schedule {'", "'}'", "':'", "'->'", "'('", "'),'", "')'", "','",
+            "HARI", "JAM", "PREFORW", "ALPHA", "ALPHAS", "ALPHANUM", "NUM", "WS"
     };
     public static final String[] ruleNames = {
-            "T__4", "T__3", "T__2", "T__1", "T__0", "ID", "NUM", "WS"
+            "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7",
+            "HARI", "JAM", "PREFORW", "ALPHA", "ALPHAS", "ALPHANUM", "NUM", "WS"
     };
 
     public ScheduleLexer(CharStream input){
@@ -29,7 +35,7 @@ public class ScheduleLexer extends Lexer {
     }
 
     @Override
-    public String getGrammarFileName() { return "Graph.g4"; }
+    public String getGrammarFileName() { return "Schedule.g4"; }
 
     @Override
     public String[] getTokenNames() { return tokenNames; }
@@ -46,7 +52,7 @@ public class ScheduleLexer extends Lexer {
     @Override
     public void action(RuleContext _localctx, int ruleIndex, int actionIndex) {
         switch (ruleIndex) {
-            case 7: WS_action((RuleContext)_localctx, actionIndex); break;
+            case 15: WS_action((RuleContext)_localctx, actionIndex); break;
         }
     }
     private void WS_action(RuleContext _localctx, int actionIndex) {

@@ -53,16 +53,18 @@ public class Main {
 
         CharStream cs = new ANTLRInputStream(is);
 
-//        ScheduleLexer lexer = new ScheduleLexer(cs);
+        ScheduleLexer lexer = new ScheduleLexer(cs);
 //
-//        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
 //
 //        ScheduleParser parser = new ScheduleParser(tokens);
 
         // coba2
-        String result = getStringFromInputStream(is);
+//        String result = getStringFromInputStream(is);
 //        System.out.println(result);
-        System.out.println(cs.toString());
+//        System.out.println(cs.toString());
+        System.out.println(lexer.toString());
+//        System.out.println(tokens.toString());
 
     }
 }
