@@ -1,5 +1,6 @@
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,11 +49,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 //        System.out.println("Hello World!");
-        InputStream is =
-                ClassLoader.getSystemResourceAsStream("resource/schedule.gr");
 
-        CharStream cs = new ANTLRInputStream(is);
-
+        CharStream cs = CharStreams.fromFileName("E:\\Semester 7\\RPLSD\\ClassSchedulingDSL\\src\\resource\\schedule.gr");
         ScheduleLexer lexer = new ScheduleLexer(cs);
 //
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -63,8 +61,8 @@ public class Main {
 //        String result = getStringFromInputStream(is);
 //        System.out.println(result);
 //        System.out.println(cs.toString());
-        System.out.println(lexer.toString());
-//        System.out.println(tokens.toString());
+//        System.out.println(lexer.toString());
+        System.out.println(tokens.getText());
 
     }
 }

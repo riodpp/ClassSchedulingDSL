@@ -1,19 +1,20 @@
 grammar Schedule;
 schedule: 'Schedule {'+jadwal+'}';
-jadwal: hari+':'+jam'->'+ruangan+'('+konfigurasi+'),'+matkul+'('+konfigurasi+')'+preforw;
+jadwal: hari jam'->'ruangan'('konfigurasi')' matkul'('konfigurasi')'preforw;
 hari: HARI;
 jam: JAM;
 ruangan: ALPHANUM;
-konfigurasi: '('+kapasitas+','+fasilitas')';
+konfigurasi: kapasitas fasilitas;
 matkul: ALPHANUM;
 preforw: PREFORW;
-kapasitas: NUM;
-fasilitas: ALPHAS;
+kapasitas: ALPHANUM;
+fasilitas: ALPHA(COMMA ALPHA)+;
+
 HARI: ('Senin'|'Selasa'|'Rabu'|'Kamis'|'Jumat'|'Sabtu'|'Minggu');
 JAM: ('01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10');
 PREFORW: ('P'|'W');
 ALPHA: [a-zA-Z]+;
-ALPHAS: [a-zA-Z,]+;
 ALPHANUM: [a-zA-Z0-9]+;
 NUM: [0-9]+;
+COMMA: ',';
 WS: [ \t\r\n]+ -> skip;
