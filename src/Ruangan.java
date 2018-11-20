@@ -1,20 +1,20 @@
+import java.util.List;
+
 public class Ruangan {
     private String nama;
     private int kapasitas;
-    private boolean laptop, papanTulis;
+    private List<String> fasilitas;
 
     public Ruangan(){
         nama = "Ruang Kelas";
         kapasitas = 50;
-        laptop = true;
-        papanTulis = true;
+        this.fasilitas = null;
     }
 
     public Ruangan(String nama, int kapasitas, boolean laptop, boolean papanTulis){
         this.nama = nama;
         this.kapasitas = kapasitas;
-        this.laptop = laptop;
-        this.papanTulis = papanTulis;
+        this.fasilitas = fasilitas;
     }
 
     public String getNama(){
@@ -25,12 +25,8 @@ public class Ruangan {
         return kapasitas;
     }
 
-    public boolean getLaptop(){
-        return laptop;
-    }
-
-    public boolean getPapanTulis(){
-        return papanTulis;
+    public List<String> getFasilitas() {
+        return fasilitas;
     }
 
     public void setNama(String nama){
@@ -41,11 +37,11 @@ public class Ruangan {
         this.kapasitas = kapasitas;
     }
 
-    public void setLaptop(boolean laptop){
-        this.laptop = laptop;
+    public void setJumlahKapasitas(int kapasitas){
+        this.kapasitas = kapasitas;
     }
 
-    public void setPapanTulis(boolean papanTulis){
-        this.papanTulis = papanTulis;
+    public void addfasilitas(String fasilitas) {
+        this.fasilitas.add(fasilitas);
     }
 }
