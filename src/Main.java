@@ -107,7 +107,6 @@ public class Main {
 
             String preforw = ctx.preforw().getText();
             Jadwal j = new Jadwal(hari, jam, ruangan, matkul, preforw);
-            System.out.println("wew");
             s.addJadwal(j);
         }
     }
