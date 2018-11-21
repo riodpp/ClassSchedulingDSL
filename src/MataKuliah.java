@@ -28,6 +28,10 @@ public class MataKuliah {
 
     @Override
     public String toString() {
-        return kode;
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<konfigurasi.getFasilitas().size(); ++i){
+            sb.append(konfigurasi.getFasilitas().get(i)+" ");
+        }
+        return "("+konfigurasi.getJumlahKapasitas() + " " + sb.toString()+")";
     }
 }

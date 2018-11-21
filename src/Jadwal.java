@@ -50,6 +50,6 @@ public class Jadwal {
 
     @Override
     public String toString() {
-        return getHari()+" "+getJam()+" -> "+getRuangan().getNama()+" "+getRuangan().toString()+" "+getMatkul().toString()+" "+getRuangan().toString()+" "+getPreforw();
+        return getHari()+" "+getJam()+" -> "+getRuangan().getNama()+" "+getRuangan().toString()+" "+getMatkul().getKode()+" "+getMatkul().toString()+" "+getPreforw();
     }
 }

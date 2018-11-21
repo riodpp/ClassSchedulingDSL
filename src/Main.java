@@ -87,21 +87,13 @@ public class Main {
         @Override
         public void exitJadwal(ScheduleParser.JadwalContext ctx) {
             List<String> kelasList = new ArrayList<>();
-            System.out.println("==========================");
-            System.out.println("kelas");
-            System.out.println(ctx.konfigurasi(0).kapasitas().getText());
 
             for (int i=0; i<ctx.konfigurasi(0).fasilitas().ALPHA().size(); ++i){
-                System.out.println(ctx.konfigurasi(0).fasilitas().ALPHA(i).getText());
                 kelasList.add(ctx.konfigurasi(0).fasilitas().ALPHA(i).getText());
             }
             List<String> matkulList = new ArrayList<>();
-            System.out.println("==========================");
 
-            System.out.println("matkul");
-            System.out.println(ctx.konfigurasi(1).kapasitas().getText());
             for (int i=0; i<ctx.konfigurasi(1).fasilitas().ALPHA().size(); ++i){
-                System.out.println(ctx.konfigurasi(1).fasilitas().ALPHA(i).getText());
                 matkulList.add(ctx.konfigurasi(1).fasilitas().ALPHA(i).getText());
             }
             Konfigurasi konfigurasiRuangan = new Konfigurasi(Integer.parseInt(ctx.konfigurasi(0).kapasitas().getText()), kelasList);
