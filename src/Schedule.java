@@ -19,7 +19,7 @@ public class Schedule {
     public static void printSchedule(Schedule jadwal){
         System.out.println("Jadwal...");
         for (Jadwal e : jadwal.getJadwal()) {
-            System.out.println(e);
+            System.out.println(e.toString());
         }
     }
 }

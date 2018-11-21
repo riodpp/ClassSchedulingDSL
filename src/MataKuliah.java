@@ -1,33 +1,33 @@
 public class MataKuliah {
-    private String nama,kode;
+    private String kode;
+    private Konfigurasi konfigurasi;
 
     public MataKuliah() {
 
     }
 
-    public MataKuliah(String nama, String kode) {
+    public MataKuliah(String kode, Konfigurasi konfigurasi) {
         this.kode = kode;
-        this.nama = nama;
+        this.konfigurasi = konfigurasi;
     }
 
-    public String getNama() {
-        return nama;
-    }
 
     public String getKode() {
         return kode;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public Konfigurasi getKonfigurasi() {
+        return konfigurasi;
     }
 
     public void setKode(String kode) {
         this.kode = kode;
     }
 
+    public void setKonfigurasi(Konfigurasi konfigurasi){this.konfigurasi = konfigurasi;}
+
     @Override
     public String toString() {
-        return nama;
+        return kode;
     }
 }

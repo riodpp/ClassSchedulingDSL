@@ -52,7 +52,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 //        System.out.println("Hello World!");
 
-        CharStream cs = CharStreams.fromFileName("E:\\Semester 7\\RPLSD\\ClassSchedulingDSL\\src\\resource\\schedule.gr");
+        CharStream cs = CharStreams.fromFileName("D:\\tugas\\sem7\\rpsld\\ClassSchedulingDSL\\src\\resource\\schedule.gr");
         ScheduleLexer lexer = new ScheduleLexer(cs);
 //
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -86,15 +86,34 @@ public class Main {
 
         @Override
         public void exitJadwal(ScheduleParser.JadwalContext ctx) {
-            List<String> tesList = new ArrayList<>();
-            tesList.add("abc");
-            tesList.add("tes");
-            String preforw = ctx.preforw().getText();
-            MataKuliah matkul = new MataKuliah(ctx.matkul().getText(), ctx.matkul().getText());
-            Konfigurasi konfigurasi = new Konfigurasi(Integer.parseInt(ctx.konfigurasi(0).kapasitas().getText()), tesList);
-            Ruangan ruangan = new Ruangan(ctx.ruangan().getText(), konfigurasi.getJumlahKapasitas(), konfigurasi.getFasilitas() );
+            List<String> kelasList = new ArrayList<>();
+            System.out.println("==========================");
+            System.out.println("kelas");
+            System.out.println(ctx.konfigurasi(0).kapasitas().getText());
+
+            for (int i=0; i<ctx.konfigurasi(0).fasilitas().ALPHA().size(); ++i){
+                System.out.println(ctx.konfigurasi(0).fasilitas().ALPHA(i).getText());
+                kelasList.add(ctx.konfigurasi(0).fasilitas().ALPHA(i).getText());
+            }
+            List<String> matkulList = new ArrayList<>();
+            System.out.println("==========================");
+
+            System.out.println("matkul");
+            System.out.println(ctx.konfigurasi(1).kapasitas().getText());
+            for (int i=0; i<ctx.konfigurasi(1).fasilitas().ALPHA().size(); ++i){
+                System.out.println(ctx.konfigurasi(1).fasilitas().ALPHA(i).getText());
+                matkulList.add(ctx.konfigurasi(1).fasilitas().ALPHA(i).getText());
+            }
+            Konfigurasi konfigurasiRuangan = new Konfigurasi(Integer.parseInt(ctx.konfigurasi(0).kapasitas().getText()), kelasList);
+            Ruangan ruangan = new Ruangan(ctx.ruangan().getText(), konfigurasiRuangan);
+
+            Konfigurasi konfigurasiMatkul = new Konfigurasi(Integer.parseInt(ctx.konfigurasi(1).kapasitas().getText()), matkulList);
+            MataKuliah matkul = new MataKuliah(ctx.matkul().getText(), konfigurasiMatkul);
+
             String jam = ctx.jam().getText();
             String hari = ctx.hari().getText();
+
+            String preforw = ctx.preforw().getText();
             Jadwal j = new Jadwal(hari, jam, ruangan, matkul, preforw);
 
             s.addJadwal(j);

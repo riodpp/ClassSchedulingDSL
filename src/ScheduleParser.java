@@ -1,4 +1,4 @@
-// Generated from E:/Semester 7/RPLSD/ClassSchedulingDSL/src\Schedule.g4 by ANTLR 4.7
+// Generated from D:/tugas/sem7/rpsld/ClassSchedulingDSL/src\Schedule.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATN;
 import org.antlr.v4.runtime.atn.ATNDeserializer;

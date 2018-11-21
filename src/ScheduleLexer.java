@@ -1,14 +1,12 @@
-// Generated from E:/Semester 7/RPLSD/ClassSchedulingDSL/src\Schedule.g4 by ANTLR 4.7
-
-import org.antlr.v4.runtime.CharStream;
+// Generated from D:/tugas/sem7/rpsld/ClassSchedulingDSL/src\Schedule.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.RuntimeMetaData;
-import org.antlr.v4.runtime.VocabularyImpl;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.LexerATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ScheduleLexer extends Lexer {
@@ -41,7 +39,7 @@ public class ScheduleLexer extends Lexer {
 		null, null, null, null, null, null, "HARI", "JAM", "PREFORW", "ALPHA", 
 		"ALPHANUM", "NUM", "COMMA", "WS"
 	};
-	public static final VocabularyImpl VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
 	 * @deprecated Use {@link #VOCABULARY} instead.
@@ -70,7 +68,7 @@ public class ScheduleLexer extends Lexer {
 
 	@Override
 
-	public VocabularyImpl getVocabulary() {
+	public Vocabulary getVocabulary() {
 		return VOCABULARY;
 	}
 
