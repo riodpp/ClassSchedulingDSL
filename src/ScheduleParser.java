@@ -19,8 +19,8 @@ public class ScheduleParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, HARI=6, JAM=7, PREFORW=8, ALPHA=9, 
-		ALPHANUM=10, NUM=11, COMMA=12, WS=13;
+		T__0=1, T__1=2, T__2=3, SCHEDULE=4, HARI=5, JAM=6, PREFORW=7, ALPHA=8, 
+		ALPHANUM=9, NUM=10, COMMA=11, ENTER=12, TAB=13, WS=14;
 	public static final int
 		RULE_schedule = 0, RULE_jadwal = 1, RULE_hari = 2, RULE_jam = 3, RULE_ruangan = 4, 
 		RULE_konfigurasi = 5, RULE_matkul = 6, RULE_preforw = 7, RULE_kapasitas = 8, 
@@ -31,12 +31,12 @@ public class ScheduleParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'Schedule {'", "'}'", "'->'", "'('", "')'", null, null, null, null, 
-		null, null, "','"
+		null, "'->'", "'('", "')'", "'Schedule {'", null, null, null, null, null, 
+		null, "','"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, "HARI", "JAM", "PREFORW", "ALPHA", 
-		"ALPHANUM", "NUM", "COMMA", "WS"
+		null, null, null, null, "SCHEDULE", "HARI", "JAM", "PREFORW", "ALPHA", 
+		"ALPHANUM", "NUM", "COMMA", "ENTER", "TAB", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -127,29 +127,13 @@ public class ScheduleParser extends Parser {
 				{
 				{
 				setState(20);
-				match(T__0);
+				jadwal();
 				}
 				}
 				setState(23); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==T__0 );
-			setState(26); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(25);
-				jadwal();
-				}
-				}
-				setState(28); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
 			} while ( _la==HARI );
-			setState(30);
-			match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -210,29 +194,29 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32);
+			setState(25);
 			hari();
-			setState(33);
+			setState(26);
 			jam();
-			setState(34);
-			match(T__2);
-			setState(35);
+			setState(27);
+			match(T__0);
+			setState(28);
 			ruangan();
-			setState(36);
-			match(T__3);
-			setState(37);
+			setState(29);
+			match(T__1);
+			setState(30);
 			konfigurasi();
-			setState(38);
-			match(T__4);
-			setState(39);
+			setState(31);
+			match(T__2);
+			setState(32);
 			matkul();
-			setState(40);
-			match(T__3);
-			setState(41);
+			setState(33);
+			match(T__1);
+			setState(34);
 			konfigurasi();
-			setState(42);
-			match(T__4);
-			setState(43);
+			setState(35);
+			match(T__2);
+			setState(36);
 			preforw();
 			}
 		}
@@ -274,7 +258,7 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(38);
 			match(HARI);
 			}
 		}
@@ -316,7 +300,7 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
+			setState(40);
 			match(JAM);
 			}
 		}
@@ -358,7 +342,7 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49);
+			setState(42);
 			match(ALPHANUM);
 			}
 		}
@@ -405,9 +389,9 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(51);
+			setState(44);
 			kapasitas();
-			setState(52);
+			setState(45);
 			fasilitas();
 			}
 		}
@@ -449,7 +433,7 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
+			setState(47);
 			match(ALPHANUM);
 			}
 		}
@@ -491,7 +475,7 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56);
+			setState(49);
 			match(PREFORW);
 			}
 		}
@@ -533,7 +517,7 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(51);
 			match(ALPHANUM);
 			}
 		}
@@ -583,21 +567,21 @@ public class ScheduleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60);
+			setState(53);
 			match(ALPHA);
-			setState(63); 
+			setState(56); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(61);
+				setState(54);
 				match(COMMA);
-				setState(62);
+				setState(55);
 				match(ALPHA);
 				}
 				}
-				setState(65); 
+				setState(58); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==COMMA );
@@ -615,23 +599,21 @@ public class ScheduleParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17F\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20?\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
-		"\2\6\2\30\n\2\r\2\16\2\31\3\2\6\2\35\n\2\r\2\16\2\36\3\2\3\2\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7"+
-		"\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\13\6\13B\n\13\r\13\16\13"+
-		"C\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\2\2>\2\27\3\2\2\2\4\"\3\2\2\2\6"+
-		"/\3\2\2\2\b\61\3\2\2\2\n\63\3\2\2\2\f\65\3\2\2\2\168\3\2\2\2\20:\3\2\2"+
-		"\2\22<\3\2\2\2\24>\3\2\2\2\26\30\7\3\2\2\27\26\3\2\2\2\30\31\3\2\2\2\31"+
-		"\27\3\2\2\2\31\32\3\2\2\2\32\34\3\2\2\2\33\35\5\4\3\2\34\33\3\2\2\2\35"+
-		"\36\3\2\2\2\36\34\3\2\2\2\36\37\3\2\2\2\37 \3\2\2\2 !\7\4\2\2!\3\3\2\2"+
-		"\2\"#\5\6\4\2#$\5\b\5\2$%\7\5\2\2%&\5\n\6\2&\'\7\6\2\2\'(\5\f\7\2()\7"+
-		"\7\2\2)*\5\16\b\2*+\7\6\2\2+,\5\f\7\2,-\7\7\2\2-.\5\20\t\2.\5\3\2\2\2"+
-		"/\60\7\b\2\2\60\7\3\2\2\2\61\62\7\t\2\2\62\t\3\2\2\2\63\64\7\f\2\2\64"+
-		"\13\3\2\2\2\65\66\5\22\n\2\66\67\5\24\13\2\67\r\3\2\2\289\7\f\2\29\17"+
-		"\3\2\2\2:;\7\n\2\2;\21\3\2\2\2<=\7\f\2\2=\23\3\2\2\2>A\7\13\2\2?@\7\16"+
-		"\2\2@B\7\13\2\2A?\3\2\2\2BC\3\2\2\2CA\3\2\2\2CD\3\2\2\2D\25\3\2\2\2\5"+
-		"\31\36C";
+		"\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3"+
+		"\13\3\13\3\13\6\13;\n\13\r\13\16\13<\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24"+
+		"\2\2\2\66\2\27\3\2\2\2\4\33\3\2\2\2\6(\3\2\2\2\b*\3\2\2\2\n,\3\2\2\2\f"+
+		".\3\2\2\2\16\61\3\2\2\2\20\63\3\2\2\2\22\65\3\2\2\2\24\67\3\2\2\2\26\30"+
+		"\5\4\3\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3"+
+		"\3\2\2\2\33\34\5\6\4\2\34\35\5\b\5\2\35\36\7\3\2\2\36\37\5\n\6\2\37 \7"+
+		"\4\2\2 !\5\f\7\2!\"\7\5\2\2\"#\5\16\b\2#$\7\4\2\2$%\5\f\7\2%&\7\5\2\2"+
+		"&\'\5\20\t\2\'\5\3\2\2\2()\7\7\2\2)\7\3\2\2\2*+\7\b\2\2+\t\3\2\2\2,-\7"+
+		"\13\2\2-\13\3\2\2\2./\5\22\n\2/\60\5\24\13\2\60\r\3\2\2\2\61\62\7\13\2"+
+		"\2\62\17\3\2\2\2\63\64\7\t\2\2\64\21\3\2\2\2\65\66\7\13\2\2\66\23\3\2"+
+		"\2\2\67:\7\n\2\289\7\r\2\29;\7\n\2\2:8\3\2\2\2;<\3\2\2\2<:\3\2\2\2<=\3"+
+		"\2\2\2=\25\3\2\2\2\4\31<";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

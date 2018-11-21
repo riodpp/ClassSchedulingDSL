@@ -1,5 +1,5 @@
 grammar Schedule;
-schedule: 'Schedule {'+jadwal+'}';
+schedule:jadwal+;
 jadwal: hari jam'->'ruangan'('konfigurasi')' matkul'('konfigurasi')'preforw;
 hari: HARI;
 jam: JAM;
@@ -10,11 +10,14 @@ preforw: PREFORW;
 kapasitas: ALPHANUM;
 fasilitas: ALPHA(COMMA ALPHA)+;
 
+SCHEDULE: 'Schedule {';
 HARI: ('Senin'|'Selasa'|'Rabu'|'Kamis'|'Jumat'|'Sabtu'|'Minggu');
-JAM: ('01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10');
+JAM: ('01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11');
 PREFORW: ('P'|'W');
 ALPHA: [a-zA-Z]+;
 ALPHANUM: [a-zA-Z0-9]+;
 NUM: [0-9]+;
 COMMA: ',';
+ENTER: [\n];
+TAB: [\t];
 WS: [ \t\r\n]+ -> skip;

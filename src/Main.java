@@ -61,9 +61,11 @@ public class Main {
 
         Schedule s = new Schedule();
 
-        parser.addParseListener(new MyScheduleBaseListener((s)));
+        parser.addParseListener(new MyScheduleBaseListener(s));
 
-        parser.jadwal();
+        parser.schedule();
+
+//        ParseTree tree = parser.schedule();
 
         Schedule.printSchedule(s);
         // coba2
@@ -72,8 +74,6 @@ public class Main {
 //        System.out.println(cs.toString());
 //        System.out.println(lexer.toString());
 //        System.out.println(tokens.getText());
-
-
     }
 
     static class MyScheduleBaseListener extends ScheduleBaseListener {
@@ -107,7 +107,7 @@ public class Main {
 
             String preforw = ctx.preforw().getText();
             Jadwal j = new Jadwal(hari, jam, ruangan, matkul, preforw);
-
+            System.out.println("wew");
             s.addJadwal(j);
         }
     }
