@@ -5,17 +5,53 @@ import java.util.List;
 
 public class Schedule {
     private List<Jadwal> schedule;
+    private List<Integer> jadwalBentrok;
 
     public Schedule(){
+        jadwalBentrok = new ArrayList<>();
         schedule = new ArrayList<>();
     }
 
     public void addJadwal(Jadwal jadwal){
         schedule.add(jadwal);
+        jadwalBentrok.add(-1);
     }
 
     public List<Jadwal> getJadwal(){
         return schedule;
+    }
+
+    public int isBentrok(Jadwal j1, Jadwal j2) {
+        String[] hari = new String[]{"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"};
+
+
+        int loc_hari_1 = 0;
+        int loc_hari_2 = 0;
+        for(int i=0; i < hari.length; ++i){
+            if(hari[i].equals(j1.getHari())){
+                loc_hari_1 = i;
+            }
+            if(hari[i].equals(j2.getHari())){
+                loc_hari_2 = i;
+            }
+        }
+        if(loc_hari_1 != loc_hari_2){
+            return -1;
+        } else if(loc_hari_1 == loc_hari_2){
+            if(Integer.parseInt(j1.getKodeJam()) != Integer.parseInt(j2.getKodeJam())){
+                return -1;
+            } else if(Integer.parseInt(j1.getKodeJam()) == Integer.parseInt(j2.getKodeJam())){
+                if(j1.getRuangan().getKodeRuangan().compareTo(j2.getRuangan().getKodeRuangan())==0){
+                    return 1;
+                } else {
+                    return -1;
+                }
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
     }
 
     public boolean isSmaller(Jadwal j1, Jadwal j2){
@@ -79,8 +115,48 @@ public class Schedule {
         this.schedule =  jadwalBaru;
     }
 
+    public void setJadwalBentrok() {
+        for (int i = 0; i < schedule.size(); ++i) {
+            if (indexBentrok(i) != -1) {
+                jadwalBentrok.set(i,1);
+            }
+        }
+    }
+
+    public int indexBentrok(int index) {
+        for(int i=0; i<schedule.size(); ++i){
+            if (index != i) {
+                if ((isBentrok(schedule.get(index), schedule.get(i)) == 1)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private List<Integer> shouldRemoveIndex() {
+        List<Integer> shouldremoveindex = new ArrayList<>();
+        for (int i = 0; i < schedule.size(); ++i) {
+            if (indexBentrok(i) != -1) {
+                if (schedule.get(i).getPreforw() == "W" && schedule.get(indexBentrok(i)).getPreforw() == "P" ) {
+                    shouldremoveindex.add(indexBentrok(i));
+                } else if (schedule.get(i).getPreforw() == "P" && schedule.get(indexBentrok(i)).getPreforw() == "W") {
+                    shouldremoveindex.add(i);
+                } else if (schedule.get(i).getPreforw() == "W" && schedule.get(indexBentrok(i)).getPreforw() == "W") {
+                    jadwalBentrok.set(i,1);
+                }
+            }
+        }
+        return shouldremoveindex;
+    }
+
+
+
     public static void prinScheduleperHari(Schedule schedule) {
         schedule.sortJadwal();
+        schedule.setJadwalBentrok();
+        String statusBentrok;
+        String preferensiMatakuliah;
         if (schedule.getJadwal().size() == 0) {
             System.out.println("Tidak ada Jadwal Kuliah yang didaftarkan");
         } else {
@@ -90,23 +166,34 @@ public class Schedule {
             for(int i=0; i<schedule.schedule.size(); i++){
                 if (!curday.equals(schedule.schedule.get(i).getHari())) {
                     curday = schedule.schedule.get(i).getHari();
-                    System.out.println(("Hari "+curday+":"));
+                    System.out.println(("\nHari "+curday+":"));
                 }
+                if (schedule.indexBentrok(i) != -1) {
+                    statusBentrok = " Terdapat Bentrok pada Jadwal ini";
+                } else {
+                    statusBentrok = " Tidak Terdapat Bentrok pada Jadwal ini";
+                }
+
+                if (schedule.schedule.get(i).getPreforw() == "P") {
+                    preferensiMatakuliah = "Kelas Preferensi";
+                } else {
+                    preferensiMatakuliah ="Kelas Wajib";
+                }
+
                 System.out.println(schedule.schedule.get(i).getWaktu()[Integer.parseInt(schedule.schedule.get(i).getKodeJam())]+
                                     " ->" + schedule.schedule.get(i).getRuangan().toString()+
                                     "\n\t\t"+schedule.schedule.get(i).getMatkul().toString()+
-                                    "\n\t\tPreferensi Matakuliah : "+schedule.schedule.get(i).getPreforw() +
-                                    "\n"
-
+                                    "\n\t\tJenis Kelas : "+ preferensiMatakuliah +
+                                    "\n\t\tStatus Bentrok :" + statusBentrok
                 );
             }
         }
-
     }
 
     public static void printSchedule(Schedule schedule){
         System.out.println("Jadwal...");
         schedule.sortJadwal();
+        schedule.setJadwalBentrok();
         System.out.println("Ukuran Jadwal : "+schedule.schedule.size());
         for(int i=0; i<schedule.schedule.size(); i++){
             System.out.println(schedule.schedule.get(i).toString());
