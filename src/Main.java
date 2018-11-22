@@ -50,13 +50,10 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-//        System.out.println("Hello World!");
 
-        CharStream cs = CharStreams.fromFileName("D:\\tugas\\sem7\\rpsld\\ClassSchedulingDSL\\src\\resource\\schedule.gr");
+        CharStream cs = CharStreams.fromFileName("src/resource/schedule.gr");
         ScheduleLexer lexer = new ScheduleLexer(cs);
-//
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-//
         ScheduleParser parser = new ScheduleParser(tokens);
 
         Schedule s = new Schedule();
@@ -67,7 +64,7 @@ public class Main {
 
 //        ParseTree tree = parser.schedule();
 
-        Schedule.printSchedule(s);
+        Schedule.prinScheduleperHari(s);
         // coba2
 //        String result = getStringFromInputStream(is);
 //        System.out.println(result);
@@ -87,15 +84,17 @@ public class Main {
         @Override
         public void exitJadwal(ScheduleParser.JadwalContext ctx) {
             List<String> kelasList = new ArrayList<>();
+            List<String> matkulList = new ArrayList<>();
 
             for (int i=0; i<ctx.konfigurasi(0).fasilitas().ALPHA().size(); ++i){
                 kelasList.add(ctx.konfigurasi(0).fasilitas().ALPHA(i).getText());
             }
-            List<String> matkulList = new ArrayList<>();
+
 
             for (int i=0; i<ctx.konfigurasi(1).fasilitas().ALPHA().size(); ++i){
                 matkulList.add(ctx.konfigurasi(1).fasilitas().ALPHA(i).getText());
             }
+
             Konfigurasi konfigurasiRuangan = new Konfigurasi(Integer.parseInt(ctx.konfigurasi(0).kapasitas().getText()), kelasList);
             Ruangan ruangan = new Ruangan(ctx.ruangan().getText(), konfigurasiRuangan);
 
@@ -107,7 +106,6 @@ public class Main {
 
             String preforw = ctx.preforw().getText();
             Jadwal j = new Jadwal(hari, jam, ruangan, matkul, preforw);
-            System.out.println("wew");
             s.addJadwal(j);
         }
     }

@@ -32,6 +32,6 @@ public class Konfigurasi {
 
     @Override
     public String toString() {
-        return getJumlahKapasitas() + " " + getFasilitas();
+        return "Kapasitas : " +getJumlahKapasitas() + " Fasilitas :" + getFasilitas();
     }
 }
