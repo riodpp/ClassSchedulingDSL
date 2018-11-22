@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 public class Schedule {
@@ -138,16 +138,18 @@ public class Schedule {
         List<Integer> shouldremoveindex = new ArrayList<>();
         for (int i = 0; i < schedule.size(); ++i) {
             if (indexBentrok(i) != -1) {
-                if (schedule.get(i).getPreforw() == "W" && schedule.get(indexBentrok(i)).getPreforw() == "P" ) {
+                if (schedule.get(i).getPreforw().equals("W") && schedule.get(indexBentrok(i)).getPreforw().equals("P")  ) {
                     shouldremoveindex.add(indexBentrok(i));
-                } else if (schedule.get(i).getPreforw() == "P" && schedule.get(indexBentrok(i)).getPreforw() == "W") {
+                } else if (schedule.get(i).getPreforw().equals("P") && schedule.get(indexBentrok(i)).getPreforw().equals("W")) {
                     shouldremoveindex.add(i);
-                } else if (schedule.get(i).getPreforw() == "W" && schedule.get(indexBentrok(i)).getPreforw() == "W") {
+                } else if (schedule.get(i).getPreforw().equals("W") && schedule.get(indexBentrok(i)).getPreforw().equals("W")) {
                     jadwalBentrok.set(i,1);
                 }
             }
         }
         return shouldremoveindex;
+
+
     }
 
 
@@ -174,7 +176,7 @@ public class Schedule {
                     statusBentrok = " Tidak Terdapat Bentrok pada Jadwal ini";
                 }
 
-                if (schedule.schedule.get(i).getPreforw() == "P") {
+                if (schedule.schedule.get(i).getPreforw().equals("P")) {
                     preferensiMatakuliah = "Kelas Preferensi";
                 } else {
                     preferensiMatakuliah ="Kelas Wajib";
@@ -187,6 +189,7 @@ public class Schedule {
                                     "\n\t\tStatus Bentrok :" + statusBentrok
                 );
             }
+            System.out.println(schedule.shouldRemoveIndex().toString());
         }
     }
 
